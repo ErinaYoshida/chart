@@ -7,15 +7,15 @@ Created on Wed Aug 25 21:51:28 2021
 import matplotlib.pyplot as plt
 import numpy as np
 
-values = np.array([31, 18, 96, 53, 68])
-labels = ["a", "b", "c", "d", "e"]
+values = np.array([1, 2, 0, 1, 3])
+labels = ["あ", "い", "う", "え", "お"]
 
 # 多角形を閉じるためにデータの最後に最初の値を追加する。
 radar_values = np.concatenate([values, [values[0]]])
 # プロットする角度を生成する。
 angles = np.linspace(0, 2 * np.pi, len(labels) + 1, endpoint=True)
 # メモリ軸の生成
-rgrids = [0, 20, 40, 60, 80, 100]
+rgrids = [0, 1, 2, 3]
 
 
 fig = plt.figure(facecolor="w")
@@ -26,7 +26,7 @@ ax.plot(angles, radar_values)
 #　レーダーチャートの内側を塗りつぶす
 ax.fill(angles, radar_values, alpha=0.2)
 # 項目ラベルの表示
-ax.set_thetagrids(angles[:-1] * 180 / np.pi, labels)
+ax.set_thetagrids(angles[:-1] * 180 / np.pi, labels,fontname="MS Gothic")
 # 円形の目盛線を消す
 ax.set_rgrids([])
 # 一番外側の円を消す
@@ -49,5 +49,6 @@ for t in rgrids:
 # rの範囲を指定
 ax.set_rlim([min(rgrids), max(rgrids)])
 
-ax.set_title("レーダチャート", pad=20)
+
+ax.set_title("レーダチャート", fontname="MS Gothic", pad=20)
 plt.show()
